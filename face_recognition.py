@@ -11,12 +11,13 @@ def detect(gray,frame): #this function takes gray and original image as input
     faces = face_cascade.detectMultiScale(gray, 1.3, 5) #To locate one or several faces
     for (x,y,w,h) in faces:  #For each detected face
         cv2.rectangle(frame,(x,y),(x+w,y+h),(255,20,147)) #Paint a rectangle around the face
+        cv2.putText(frame,'Face',(x,y),cv2.FONT_HERSHEY_PLAIN,1,(255,255,0),2,False)
         gray_im = gray[y:y+h,x:x+w] #get the region of interest in the black and white image
         colorful_im = frame[y:y+h,x:x+w] #get the region of interest in the original image
         eyes = eye_cascade.detectMultiScale(gray_im,1.3,5)
         for (x_e,y_e,w_e,h_e) in eyes:  #For each detected eye
             cv2.rectangle(colorful_im,(x_e,y_e),(x_e+w_e,y_e+h_e),(255,0,0),2) #Paint a rectangle around the afce
-            
+            cv2.putText(colorful_im,'eyes',(x_e,y_e),cv2.FONT_HERSHEY_PLAIN,1,(0,255,255))
         return frame
 
 # Doing some Face Recognition with the webcam

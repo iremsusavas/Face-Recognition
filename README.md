@@ -1,2 +1,2 @@
 # Face-Recognition
-Face Detection with OpenCV
+Face Detection with using OpenCV
